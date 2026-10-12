@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body { font-family: sans-serif; padding: 20px; text-align: center; }
+        .box { margin: 15px auto; width: 200px; display: block; padding: 15px; }
+        .result { font-weight: bold; font-size: 18px; color:black; margin-top: 35px; }
+    </style>
+</head>
+<body>
+
+    <h2>Fibonacci Generator</h2>
+    <input type="number" id="terms" value="6" min="1" class="box">
+    <button id="calcBtn" class="box">return series</button>
+    <div id="output" class="result"></div>
+
+    <script>
+        function fibonaci(n) {
+            let fiberseries = [];
+            let a = 0, b = 1;
+            
+            for(let i = 0; i < n; i++) {
+                fiberseries.push(a);
+                let next = a + b;
+                a = b;
+                b = next;
+            }
+            return fiberseries;
+        }
+
+        
+        const button = document.getElementById('calcBtn');
+        const input = document.getElementById('terms');
+        const output = document.getElementById('output');
+
+        button.addEventListener('click', () => {
+            const count = parseInt(input.value) || 0;
+            const series = fibonaci(count);
+            output.textContent = series.join(', ');
+        });
+    </script>
+</body>
+</html>
